@@ -1,0 +1,15 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: rgb(36, 33, 33);
+}
+
+body {
+    background: var(--background);
+}
