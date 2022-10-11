@@ -13,6 +13,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"express": "^4.18.2",
+		"sacn": "^4.2.0",
 		"sass": "^1.55.0"
 	},
 	"devDependencies": {
