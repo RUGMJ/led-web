@@ -8,8 +8,65 @@
 
 :root {
     --background: rgb(36, 33, 33);
+    --text: white;
+    --animation-time: 0.5s;
+    --animation-easing: ease-in-out;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+
     background: var(--background);
+    color: var(--text);
+    text-align: center;
+
+    transition: color var(--animation-time) var(--animation-easing);
+    transition: background var(--animation-time) var(--animation-easing);
+}
+
+label {
+    display: block;
+}
+
+input {
+    margin-bottom: 10%;
+    border: none;
+    width: 10vh;
+    height: 10vh;
+    background: transparent;
+    border: 2px solid var(--text);
+    border-radius: 10px;
+
+    &::-webkit-color-swatch {
+        border-radius: 10px;
+        border: none;
+        transition: background var(--animation-time) var(--animation-easing);
+
+    }
+
+    &::-moz-color-swatch {
+        border-radius: 10px;
+        border: none;
+        transition: background var(--animation-time) var(--animation-easing);
+
+
+    }
+}
+
+input[type="checkbox"] {
+    border-radius: 100000000000px;
+    padding: 1%;
+}
+
+noscript {
+    position: absolute;
+    top: 40%;
+    background: black;
+    padding: 5%;
+    border-radius: 10px;
+
 }
