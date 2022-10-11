@@ -1,18 +1,19 @@
-const root = document.querySelector(':root');
+const Root = document.querySelector(':root');
 
-const color = document.querySelector('#color');
-const power = document.querySelector('#power');
+const Color = document.querySelector('#color');
+const Hex = document.querySelector('#hex');
 
-color?.addEventListener('change', e => {
+Color?.addEventListener('change', e => {
 	e.preventDefault();
 	setProperties(e.target.value);
 });
 
-setProperties(color.value);
+setProperties(Color.value);
 
 function setProperties(hex) {
-	root.style.setProperty('--background', hex);
-	root.style.setProperty('--text', invertColor(hex, true));
+	Root.style.setProperty('--background', hex);
+	Root.style.setProperty('--text', invertColor(hex, true));
+	Hex.innerText = hex;
 }
 
 function invertColor(hex, bw) {

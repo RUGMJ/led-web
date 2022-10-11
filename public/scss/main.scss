@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 *,
 *::before,
 *::after {
@@ -19,13 +21,26 @@ body {
     align-items: center;
     height: 100vh;
     justify-content: center;
+    font-size: 100%;
 
     background: var(--background);
     color: var(--text);
+    font-family: 'Poppins', sans-serif;
     text-align: center;
 
     transition: color var(--animation-time) var(--animation-easing);
     transition: background var(--animation-time) var(--animation-easing);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#hex {
+    font-size: 5rem;
+    text-transform: uppercase;
 }
 
 label {
@@ -35,8 +50,8 @@ label {
 input {
     margin-bottom: 10%;
     border: none;
-    width: 10vh;
-    height: 10vh;
+    width: 10rem;
+    height: 10rem;
     background: transparent;
     border: 2px solid var(--text);
     border-radius: 10px;
@@ -57,16 +72,10 @@ input {
     }
 }
 
-input[type="checkbox"] {
-    border-radius: 100000000000px;
-    padding: 1%;
-}
-
 noscript {
     position: absolute;
     top: 40%;
     background: black;
     padding: 5%;
     border-radius: 10px;
-
 }
