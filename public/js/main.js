@@ -6,15 +6,29 @@ const Hex = document.querySelector('#hex');
 Color?.addEventListener('change', e => {
 	e.preventDefault();
 	setProperties(e.target.value);
+	SetHexValue(e.target.value);
 });
-
-setProperties(Color.value);
 
 function setProperties(hex) {
 	Root.style.setProperty('--background', hex);
 	Root.style.setProperty('--text', invertColor(hex, true));
 	Hex.innerText = hex;
 }
+
+async function SetHexValue(hex) {
+	await fetch(`/api/${hex.replace('#', '')}`);
+}
+
+async function Refresh() {
+	const res = await fetch('/api');
+	const hex = await res.json();
+	Color.value = `#${hex}`;
+	setProperties(`#${hex}`);
+}
+
+Refresh();
+
+setInterval(() => Refresh(), 100);
 
 function invertColor(hex, bw) {
 	if (hex.indexOf('#') === 0) {
