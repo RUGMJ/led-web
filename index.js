@@ -6,7 +6,7 @@ app.use(express.static('./public'));
 
 app.listen(3000);
 
-let color = '#000000';
+let color = '000000';
 
 app.get('/api/', (req, res) => {
 	res.json(color);
@@ -14,7 +14,6 @@ app.get('/api/', (req, res) => {
 
 app.get('/api/:hex', (req, res) => {
 	color = req.params.hex;
-
 	updateLeds(color);
 
 	res.json(req.params.hex);
