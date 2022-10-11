@@ -12,7 +12,7 @@ app.get('/api/', (req, res) => {
 	res.json(color);
 });
 
-app.post('/api/:hex', (req, res) => {
+app.get('/api/:hex', (req, res) => {
 	color = req.params.hex;
 
 	updateLeds(color);
