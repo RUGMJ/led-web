@@ -12,6 +12,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@paradise-pi/e131": "^1.3.0",
 		"e131": "^1.1.3",
 		"express": "^4.18.2",
 		"sass": "^1.55.0"

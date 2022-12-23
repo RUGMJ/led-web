@@ -16,7 +16,7 @@ function setProperties(hex) {
 }
 
 async function SetHexValue(hex) {
-	await fetch(`/api/${hex.replace('#', '')}`);
+	await fetch(`/api/hex/${hex.replace('#', '')}`);
 }
 
 async function Refresh() {
