@@ -1,9 +1,9 @@
 import express from 'express';
-import { Client } from 'e131';
+import { Client } from '@paradise-pi/e131';
 
 const app = express();
 
-app.use(express.static('./public'));
+app.use(express.static('/home/dietpi/led-web/public'));
 
 app.listen(3000);
 
@@ -17,16 +17,15 @@ app.get('/api/', (req, res) => {
 
 app.get('/api/:hex', (req, res) => {
 	color = req.params.hex;
-	updateLeds(color);
+	console.log(color);
+	const { r, g, b } = hex_to_RGB(color);
+	updateLeds(r, g, b);
 
 	res.json(req.params.hex);
 });
 
-async function updateLeds(hex) {
+function updateLeds(r, g, b) {
 	// 🚧 WIP 🚧
-
-	const { r, g, b } = hex_to_RGB(hex);
-
 	const packet = client.createPacket(170 * 3);
 	packet.setUniverse(0x01);
 	const slotsData = packet.getSlotsData();
@@ -34,12 +33,14 @@ async function updateLeds(hex) {
 	const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
 	for (let i = 2; i < 170 * 3; i += 3) {
-		slotsData[i - 2] = clamp(r + Math.random() * 10, 0, 255);
-		slotsData[i - 1] = clamp(g + Math.random() * 10, 0, 255);
-		slotsData[i - 0] = clamp(b + Math.random() * 10, 0, 255);
+		slotsData[i - 2] = clamp(r, 0, 255);
+		slotsData[i - 1] = clamp(g, 0, 255);
+		slotsData[i - 0] = clamp(b, 0, 255);
 	}
-	console.log(slotsData[0], slotsData[1], slotsData[2]);
-	client.send(packet, () => {});
+	client.send(packet, err => {
+		console.log('Sent Packet');
+		console.log(err);
+	});
 }
 
 function hex_to_RGB(hex) {
